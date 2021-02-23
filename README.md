@@ -1,14 +1,7 @@
-# Welcome to your CDK TypeScript project!
+# CDK Bug Report
 
-This is a blank project for TypeScript development with CDK.
+When running "cdk synth" this code will not work.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+The esbuildCommand in aws-lambda-nodejs returns
+an un-escaped string, resulting in esbuild crashing because it expects multiple files.
+A solution could be to either wrap "--bundle" and "--outfile" paths in single/double quotation, or by escaping spaces with /.
